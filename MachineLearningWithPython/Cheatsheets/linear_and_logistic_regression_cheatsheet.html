@@ -1,0 +1,294 @@
+<html><head>
+                <style>
+                    .linenums {
+                        list-style-type: none;
+                    }
+
+                    .formatted-line-numbers {
+                        display: none;
+                    }
+                    .action-code-block {
+                        display: none;
+                    }
+                    table {
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+                    table, th, td {
+                        border: 1px solid black;
+                        padding: 8px;
+                        text-align: left;
+                    }
+                </style>
+            </head><body><h2><span class="header-link octicon octicon-link"></span>Cheat Sheet: Linear and Logistic Regression</h2><h3><span class="header-link octicon octicon-link"></span>Comparing different regression types</h3><table>
+    <thead>
+        <tr>
+            <th>Model Name</th>
+            <th>Description</th>
+            <th>Code Syntax</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Simple linear regression</td>
+            <td>
+                <strong>Purpose:</strong> To predict a dependent variable based on one independent variable.<br>
+                <strong>Pros:</strong> Easy to implement, interpret, and efficient for small datasets.<br>
+                <strong>Cons:</strong> Not suitable for complex relationships; prone to underfitting.<br>
+                <strong>Modeling equation:</strong> y = b<sub>0</sub> + b<sub>1</sub>x
+            </td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li><li>3</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">linear_model </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">LinearRegression</span></code></li><li class="L1"><code><span class="pln">model </span><span class="pun">=</span><span class="pln"> </span><span class="typ">LinearRegression</span><span class="pun">()</span></code></li><li class="L2"><code><span class="pln">model</span><span class="pun">.</span><span class="pln">fit</span><span class="pun">(</span><span class="pln">X</span><span class="pun">,</span><span class="pln"> y</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-0">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-0">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>Polynomial regression</td>
+            <td>
+                <strong>Purpose:</strong> To capture nonlinear relationships between variables.<br>
+                <strong>Pros:</strong> Better at fitting nonlinear data compared to linear regression.<br>
+                <strong>Cons:</strong> Prone to overfitting with high-degree polynomials.<br>
+                <strong>Modeling equation:</strong> y = b<sub>0</sub> + b<sub>1</sub>x + b<sub>2</sub>x<sup>2</sup> + ...
+            </td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">preprocessing </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">PolynomialFeatures</span></code></li><li class="L1"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">linear_model </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">LinearRegression</span></code></li><li class="L2"><code><span class="pln">poly </span><span class="pun">=</span><span class="pln"> </span><span class="typ">PolynomialFeatures</span><span class="pun">(</span><span class="pln">degree</span><span class="pun">=</span><span class="lit">2</span><span class="pun">)</span></code></li><li class="L3"><code><span class="pln">X_poly </span><span class="pun">=</span><span class="pln"> poly</span><span class="pun">.</span><span class="pln">fit_transform</span><span class="pun">(</span><span class="pln">X</span><span class="pun">)</span></code></li><li class="L4"><code><span class="pln">model </span><span class="pun">=</span><span class="pln"> </span><span class="typ">LinearRegression</span><span class="pun">().</span><span class="pln">fit</span><span class="pun">(</span><span class="pln">X_poly</span><span class="pun">,</span><span class="pln"> y</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-1">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-1">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>Multiple linear regression</td>
+            <td>
+                <strong>Purpose:</strong> To predict a dependent variable based on multiple independent variables.<br>
+                <strong>Pros:</strong> Accounts for multiple factors influencing the outcome.<br>
+                <strong>Cons:</strong> Assumes a linear relationship between predictors and target.<br>
+                <strong>Modeling equation:</strong> y = b<sub>0</sub> + b<sub>1</sub>x<sub>1</sub> + b<sub>2</sub>x<sub>2</sub> + ...
+            </td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li><li>3</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">linear_model </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">LinearRegression</span></code></li><li class="L1"><code><span class="pln">model </span><span class="pun">=</span><span class="pln"> </span><span class="typ">LinearRegression</span><span class="pun">()</span></code></li><li class="L2"><code><span class="pln">model</span><span class="pun">.</span><span class="pln">fit</span><span class="pun">(</span><span class="pln">X</span><span class="pun">,</span><span class="pln"> y</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-2">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-2">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>Logistic regression</td>
+            <td>
+                <strong>Purpose:</strong> To predict probabilities of categorical outcomes.<br>
+                <strong>Pros:</strong> Efficient for binary classification problems.<br>
+                <strong>Cons:</strong> Assumes a linear relationship between independent variables and log-odds.<br>
+                <strong>Modeling equation:</strong> log(p/(1-p)) = b<sub>0</sub> + b<sub>1</sub>x<sub>1</sub> + ...
+            </td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li><li>3</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">linear_model </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">LogisticRegression</span></code></li><li class="L1"><code><span class="pln">model </span><span class="pun">=</span><span class="pln"> </span><span class="typ">LogisticRegression</span><span class="pun">()</span></code></li><li class="L2"><code><span class="pln">model</span><span class="pun">.</span><span class="pln">fit</span><span class="pun">(</span><span class="pln">X</span><span class="pun">,</span><span class="pln"> y</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-3">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-3">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+    </tbody>
+</table><h3><span class="header-link octicon octicon-link"></span>Associated functions commonly used</h3><table>
+    <thead>
+        <tr>
+            <th>Function/Method Name</th>
+            <th>Brief Description</th>
+            <th>Code Syntax</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>train_test_split</td>
+            <td>Splits the dataset into training and testing subsets to evaluate the model's performance.</td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">model_selection </span><span class="kwd">import</span><span class="pln"> train_test_split</span></code></li><li class="L1"><code><span class="pln">X_train</span><span class="pun">,</span><span class="pln"> X_test</span><span class="pun">,</span><span class="pln"> y_train</span><span class="pun">,</span><span class="pln"> y_test </span><span class="pun">=</span><span class="pln"> train_test_split</span><span class="pun">(</span><span class="pln">X</span><span class="pun">,</span><span class="pln"> y</span><span class="pun">,</span><span class="pln"> test_size</span><span class="pun">=</span><span class="lit">0.2</span><span class="pun">,</span><span class="pln"> random_state</span><span class="pun">=</span><span class="lit">42</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-4">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-4">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>StandardScaler</td>
+            <td>Standardizes features by removing the mean and scaling to unit variance.</td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li><li>3</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">preprocessing </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">StandardScaler</span></code></li><li class="L1"><code><span class="pln">scaler </span><span class="pun">=</span><span class="pln"> </span><span class="typ">StandardScaler</span><span class="pun">()</span></code></li><li class="L2"><code><span class="pln">X_scaled </span><span class="pun">=</span><span class="pln"> scaler</span><span class="pun">.</span><span class="pln">fit_transform</span><span class="pun">(</span><span class="pln">X</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-5">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-5">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>log_loss</td>
+            <td>Calculates the logarithmic loss, a performance metric for classification models.</td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">metrics </span><span class="kwd">import</span><span class="pln"> log_loss</span></code></li><li class="L1"><code><span class="pln">loss </span><span class="pun">=</span><span class="pln"> log_loss</span><span class="pun">(</span><span class="pln">y_true</span><span class="pun">,</span><span class="pln"> y_pred_proba</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-6">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-6">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>mean_absolute_error</td>
+            <td>Calculates the mean absolute error between actual and predicted values.</td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">metrics </span><span class="kwd">import</span><span class="pln"> mean_absolute_error</span></code></li><li class="L1"><code><span class="pln">mae </span><span class="pun">=</span><span class="pln"> mean_absolute_error</span><span class="pun">(</span><span class="pln">y_true</span><span class="pun">,</span><span class="pln"> y_pred</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-7">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-7">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>mean_squared_error</td>
+            <td>Computes the mean squared error between actual and predicted values.</td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">metrics </span><span class="kwd">import</span><span class="pln"> mean_squared_error</span></code></li><li class="L1"><code><span class="pln">mse </span><span class="pun">=</span><span class="pln"> mean_squared_error</span><span class="pun">(</span><span class="pln">y_true</span><span class="pun">,</span><span class="pln"> y_pred</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-8">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-8">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>root_mean_squared_error</td>
+            <td>Calculates the root mean squared error (RMSE), a commonly used metric for regression tasks.</td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li><li>3</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">metrics </span><span class="kwd">import</span><span class="pln"> mean_squared_error</span></code></li><li class="L1"><code><span class="kwd">import</span><span class="pln"> numpy </span><span class="kwd">as</span><span class="pln"> np</span></code></li><li class="L2"><code><span class="pln">rmse </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">sqrt</span><span class="pun">(</span><span class="pln">mean_squared_error</span><span class="pun">(</span><span class="pln">y_true</span><span class="pun">,</span><span class="pln"> y_pred</span><span class="pun">))</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-9">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-9">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+        <tr>
+            <td>r2_score</td>
+            <td>Computes the R-squared value, indicating how well the model explains the variability of the target variable.</td>
+            <td>
+
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="formatted-line-numbers"><li>1</li><li>2</li></ol><ol class="linenums"><li class="L0"><code><span class="kwd">from</span><span class="pln"> sklearn</span><span class="pun">.</span><span class="pln">metrics </span><span class="kwd">import</span><span class="pln"> r2_score</span></code></li><li class="L1"><code><span class="pln">r2 </span><span class="pun">=</span><span class="pln"> r2_score</span><span class="pun">(</span><span class="pln">y_true</span><span class="pun">,</span><span class="pln"> y_pred</span><span class="pun">)</span></code></li></ol>
+          <div class="code-block-actions multiple-lines z-0">
+            <button title="Copy" class="action-code-block copy-code-block multiple-lines">
+              <i class="fa fa-copy" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-copy-10">Copied!</span>
+            </button>
+            <button title="Toggle Wrap" class="action-code-block wrap-code-block multiple-lines">
+              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <span class="popuptext" id="md-code-block-wrap-10">Wrap Toggled!</span>
+            </button>
+
+
+          </div>
+        </pre>
+</td>
+        </tr>
+    </tbody>
+</table><h2><span class="header-link octicon octicon-link"></span>Author(s)</h2><p><a target="_blank" href="https://www.linkedin.com/in/jpgrossman/">Jeff Grossman</a><br><a target="_blank" href="https://www.linkedin.com/in/abhishek-gagneja-23051987/">Abhishek Gagneja</a></p><p><img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/fNJPMqiYJgs4XkH0Xfo4VQ/ibmsn-footer-blue.png" alt=""><br><br></p></body></html>

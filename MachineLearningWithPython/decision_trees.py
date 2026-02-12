@@ -47,7 +47,7 @@ X = my_data.drop(['Drug','Drug_num'], axis=1)
 
 X_trainset, X_testset, y_trainset, y_testset = train_test_split(X, y, test_size=0.3, random_state=32)
 
-drugTree = DecisionTreeClassifier(criterion="entropy", max_depth = 3)
+drugTree = DecisionTreeClassifier(criterion="entropy", max_depth = 4)
 drugTree.fit(X_trainset,y_trainset)
 
 tree_predictions = drugTree.predict(X_testset)

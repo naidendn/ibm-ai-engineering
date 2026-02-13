@@ -69,5 +69,3 @@ plot_tree(
 )
 
 plt.show()
-
-

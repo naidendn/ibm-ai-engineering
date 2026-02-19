@@ -1,16 +1,13 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.cluster import DBSCAN
-import hdbscan
-from sklearn.preprocessing import StandardScaler
-
-# Geographical tools
-import geopandas as gpd    # DataFrame-like structure for geographic data with geometry columns
-import contextily as ctx   # Fetches and overlays map tiles (basemap) on matplotlib axes
-from shapely.geometry import Point
-
 import warnings
+
+import contextily as ctx  # Fetches and overlays map tiles (basemap) on matplotlib axes
+# Geographical tools
+import geopandas as gpd  # DataFrame-like structure for geographic data with geometry columns
+import hdbscan
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.cluster import DBSCAN
+
 warnings.filterwarnings('ignore')
 
 import requests

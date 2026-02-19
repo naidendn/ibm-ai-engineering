@@ -1,14 +1,15 @@
 import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
-from sklearn.preprocessing import StandardScaler
+import pandas as pd
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import StandardScaler
 
 # Load the telecom customer dataset from IBM Cloud Object Storage
 # Target column 'custcat' contains 4 customer categories (service tiers)
-df = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/teleCust1000t.csv')
+df = pd.read_csv(
+    'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/teleCust1000t.csv')
 
 # Separate features from the target label
 X = df.drop('custcat', axis=1)
@@ -23,7 +24,7 @@ X_train, X_test, y_train, y_test = train_test_split(X_norm, y, test_size=0.2, ra
 
 # Evaluate every K from 1 to 100 to find the optimal number of neighbours
 Ks = 100
-acc = np.zeros((Ks))      # stores accuracy for each K
+acc = np.zeros((Ks))  # stores accuracy for each K
 std_acc = np.zeros((Ks))  # stores standard deviation of accuracy for each K
 
 for n in range(1, Ks + 1):

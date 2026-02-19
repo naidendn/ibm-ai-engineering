@@ -1,13 +1,12 @@
 from __future__ import print_function
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import normalize
-from sklearn.metrics import mean_squared_error
 
 import warnings
+
+import pandas as pd
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import normalize
+
 warnings.filterwarnings('ignore')
 
 # Load the NYC taxi trip dataset from IBM Cloud Object Storage
@@ -23,7 +22,8 @@ y = raw_data[['tip_amount']].values.astype('float32')
 
 # Drop the target and columns that are not useful predictors
 # (payment_type and VendorID are categorical IDs; improvement_surcharge and store_and_fwd_flag are admin fields)
-proc_data = raw_data.drop(['tip_amount', 'improvement_surcharge', 'payment_type', 'VendorID', 'store_and_fwd_flag'], axis=1)
+proc_data = raw_data.drop(['tip_amount', 'improvement_surcharge', 'payment_type', 'VendorID', 'store_and_fwd_flag'],
+                          axis=1)
 
 # Build the feature matrix
 X = proc_data.values

@@ -1,22 +1,19 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from sklearn.datasets import make_blobs
-from sklearn.preprocessing import StandardScaler
-
-import umap.umap_ as UMAP   # imported as UMAP to avoid collision with the module name
-from sklearn.manifold import TSNE
-from sklearn.decomposition import PCA
-
 import plotly.express as px
+import umap.umap_ as UMAP  # imported as UMAP to avoid collision with the module name
+from sklearn.datasets import make_blobs
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
+from sklearn.preprocessing import StandardScaler
 
 # --- Generate synthetic 3D data with 4 clusters ---
 # Each center defines the mean location of a cluster in 3D space
 # cluster_std controls how spread out each cluster is (higher = more overlap)
-centers = [[ 2, -6, -6],
-           [-1,  9,  4],
-           [-8,  7,  2],
-           [ 4,  7,  9]]
+centers = [[2, -6, -6],
+           [-1, 9, 4],
+           [-8, 7, 2],
+           [4, 7, 9]]
 
 cluster_std = [1, 1, 2, 3.5]
 
@@ -30,7 +27,7 @@ fig = px.scatter_3d(df, x='X', y='Y', z='Z', color=labels_.astype(str),
                     title="3D Scatter Plot of Four Blobs")
 fig.update_traces(marker=dict(size=5, line=dict(width=1, color='black')), showlegend=False)
 fig.update_layout(coloraxis_showscale=False, width=1000, height=800)
-#fig.show()
+# fig.show()
 
 # Standardize the 3D data before applying any dimensionality reduction
 # All three methods are sensitive to feature scale
@@ -52,7 +49,7 @@ ax.set_xlabel("t-SNE Component 1")
 ax.set_ylabel("t-SNE Component 2")
 ax.set_xticks([])
 ax.set_yticks([])
-#plt.show()
+# plt.show()
 
 # --- UMAP: Uniform Manifold Approximation and Projection ---
 # UMAP also preserves local structure but is generally faster and better preserves global structure
@@ -70,7 +67,7 @@ ax.set_xlabel("UMAP Component 1")
 ax.set_ylabel("UMAP Component 2")
 ax.set_xticks([])
 ax.set_yticks([])
-#plt.show()
+# plt.show()
 
 # --- PCA: Principal Component Analysis ---
 # PCA is a linear method — it projects onto the directions of maximum variance

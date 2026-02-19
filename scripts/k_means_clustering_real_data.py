@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import plotly.express as px
 import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-import plotly.express as px
 
 # Load the customer segmentation dataset from IBM Cloud Object Storage
 cust_df = pd.read_csv(
@@ -44,7 +44,7 @@ area = np.pi * (X[:, 1]) ** 2
 plt.scatter(X[:, 0], X[:, 3], s=area, c=labels.astype(float), cmap='tab10', ec='k', alpha=0.5)
 plt.xlabel('Age', fontsize=18)
 plt.ylabel('Income', fontsize=16)
-#plt.show()
+# plt.show()
 
 # Interactive 3D scatter plot: Education (x), Age (y), Income (z), coloured by cluster
 fig = px.scatter_3d(x=X[:, 1], y=X[:, 0], z=X[:, 3],
@@ -57,7 +57,7 @@ fig.update_layout(coloraxis_showscale=False, width=1000, height=800, scene=dict(
     yaxis=dict(title='Age'),
     zaxis=dict(title='Income')
 ))
-#fig.show()
+# fig.show()
 
 # Pairwise scatter plot matrix of Age, Education, and Income coloured by cluster
 # KDE plots on the diagonal show the distribution of each variable per segment

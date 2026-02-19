@@ -1,12 +1,12 @@
-import numpy as np
+import warnings
+
 import pandas as pd
 from matplotlib import pyplot as plt
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn import metrics
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 
-import warnings
 warnings.filterwarnings('ignore')
 
 # Load the drug prescription dataset from IBM Cloud Object Storage
@@ -32,11 +32,11 @@ print(my_data.isnull().sum())
 custom_map = {'drugA': 0, 'drugB': 1, 'drugC': 2, 'drugX': 3, 'drugY': 4}
 my_data['Drug_num'] = my_data['Drug'].map(custom_map)
 
-#my_data = my_data.drop("Drug", axis=1)
-#print(my_data)
+# my_data = my_data.drop("Drug", axis=1)
+# print(my_data)
 
-#correlations = my_data.corr(method='pearson')
-#print(correlations)
+# correlations = my_data.corr(method='pearson')
+# print(correlations)
 
 # Count how many patients were prescribed each drug
 category_counts = my_data['Drug'].value_counts()
@@ -47,7 +47,7 @@ plt.xlabel('Drug')
 plt.ylabel('Count')
 plt.title('Category Distribution')
 plt.xticks(rotation=45)
-#plt.show()
+# plt.show()
 
 # Define features (X) and target label (y)
 # Drop both the string drug name and its numeric equivalent from features
@@ -70,7 +70,7 @@ print("Decision Trees's Accuracy: ", metrics.accuracy_score(y_testset, tree_pred
 
 # Quick tree visualisation without feature labels
 plot_tree(drugTree)
-#plt.show()
+# plt.show()
 
 # Full tree visualisation with feature names, class names, colour-coded nodes,
 # and rounded boxes — each node shows the split condition and class distribution

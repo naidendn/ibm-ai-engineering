@@ -1,14 +1,15 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.multiclass import OneVsOneClassifier
-from sklearn.metrics import accuracy_score
-
 import warnings
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.multiclass import OneVsOneClassifier
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
 warnings.filterwarnings('ignore')
 
 # Load the obesity level prediction dataset from IBM Cloud Object Storage
@@ -19,7 +20,7 @@ data.head()
 # Visualise the distribution of obesity levels to understand class balance
 sns.countplot(y='NObeyesdad', data=data)
 plt.title('Distribution of Obesity Levels')
-#plt.show()
+# plt.show()
 
 # Verify there are no missing values before preprocessing
 print(data.isnull().sum())
@@ -71,7 +72,7 @@ model_ova.fit(X_train, y_train)
 y_pred_ova = model_ova.predict(X_test)
 
 print("One-vs-All (OvA) Strategy")
-print(f"Accuracy: {np.round(100*accuracy_score(y_test, y_pred_ova),2)}%")
+print(f"Accuracy: {np.round(100 * accuracy_score(y_test, y_pred_ova), 2)}%")
 
 # --- One-vs-One (OvO) classifier ---
 # Trains one binary classifier for every pair of classes: C(n, 2) classifiers in total
@@ -82,7 +83,7 @@ model_ovo.fit(X_train, y_train)
 y_pred_ovo = model_ovo.predict(X_test)
 
 print("One-vs-One (OvO) Strategy")
-print(f"Accuracy: {np.round(100*accuracy_score(y_test, y_pred_ovo),2)}%")
+print(f"Accuracy: {np.round(100 * accuracy_score(y_test, y_pred_ovo), 2)}%")
 
 # --- Feature importance for OvA ---
 # Average the absolute coefficient magnitudes across all class-specific classifiers
@@ -91,7 +92,7 @@ feature_importance = np.mean(np.abs(model_ova.coef_), axis=0)
 plt.barh(X.columns, feature_importance)
 plt.title("Feature Importance")
 plt.xlabel("Importance")
-#plt.show()
+# plt.show()
 
 # --- Feature importance for OvO ---
 # Each estimator in OvO is a binary classifier with its own coef_ vector
@@ -102,4 +103,4 @@ feature_importance = np.mean(np.abs(coefs), axis=0)
 plt.barh(X.columns, feature_importance)
 plt.title("Feature Importance (One-vs-One)")
 plt.xlabel("Importance")
-#plt.show()
+# plt.show()

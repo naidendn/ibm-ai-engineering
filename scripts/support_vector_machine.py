@@ -1,14 +1,16 @@
 from __future__ import print_function
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import normalize, StandardScaler
-from sklearn.utils.class_weight import compute_sample_weight
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import roc_auc_score
-from sklearn.svm import LinearSVC
 
 import warnings
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import normalize, StandardScaler
+from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.utils.class_weight import compute_sample_weight
+
 warnings.filterwarnings('ignore')
 
 # Load the credit card fraud dataset from IBM Cloud Object Storage
@@ -24,7 +26,7 @@ sizes = raw_data.Class.value_counts().values
 fig, ax = plt.subplots()
 ax.pie(sizes, labels=labels, autopct='%1.3f%%')
 ax.set_title('Target Variable Value Counts')
-#plt.show()
+# plt.show()
 
 # Plot the correlation of each feature with the Class label to identify useful predictors
 correlation_values = raw_data.corr()['Class'].drop('Class')

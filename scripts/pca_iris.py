@@ -1,7 +1,6 @@
-import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
 from sklearn import datasets
+from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 # Load the classic Iris dataset: 150 samples, 4 features (sepal/petal length & width), 3 species

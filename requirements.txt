@@ -1,0 +1,13 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+seaborn
+xgboost
+umap-learn
+hdbscan
+geopandas
+contextily
+shapely
+requests
+plotly

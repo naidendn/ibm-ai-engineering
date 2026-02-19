@@ -14,7 +14,7 @@ from sklearn.svm import SVC
 # Binary target: 0 = malignant, 1 = benign
 data = load_breast_cancer()
 X, y = data.data, data.target
-labels = data.target_names        # ['malignant', 'benign']
+labels = data.target_names  # ['malignant', 'benign']
 feature_names = data.feature_names
 
 # Print the full dataset description and class names for reference

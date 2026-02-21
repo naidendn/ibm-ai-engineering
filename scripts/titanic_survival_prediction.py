@@ -197,5 +197,5 @@ plt.xlabel('Coefficient Magnitude')
 plt.show()
 
 # Print test score
-test_score = model.best_estimator_.score(..., ...)
+test_score = model.best_estimator_.score(X_test, y_test)
 print(f"\nTest set accuracy: {test_score:.2%}")
